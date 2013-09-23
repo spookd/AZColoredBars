@@ -39,11 +39,12 @@ static CGFloat const kSpaceToCoverStatusBars = 64.f;
 {
     [super layoutSubviews];
     
+    // Return early if this is an older version of iOS.
     if ([[[UIDevice currentDevice] systemVersion] integerValue] < 7)
         return;
     
-    if (self.extraColorLayer != nil)
-        self.extraColorLayer.frame = CGRectMake(0, 0 - kSpaceToCoverStatusBars, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + kSpaceToCoverStatusBars);
+    if (self.extraColorLayer)
+        self.extraColorLayer.frame = CGRectMake(0.f, -kSpaceToCoverStatusBars, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + kSpaceToCoverStatusBars);
     
     [self.extraColorLayer removeFromSuperlayer];
     [self.layer insertSublayer:_extraColorLayer atIndex:1];
@@ -55,6 +56,7 @@ static CGFloat const kSpaceToCoverStatusBars = 64.f;
 {
     [super setBarTintColor:barTintColor];
     
+    // Return early if this is an older version of iOS.
     if ([[[UIDevice currentDevice] systemVersion] integerValue] < 7)
         return;
     
