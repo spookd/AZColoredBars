@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AZColoredNavigationBar"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "A UINavigationBar subclass for strong colored navigation bars on iOS 7."
   s.description  = <<-DESC
 				   A drop–in `UINavigationBar` subclass which allows for strong coloured navigation bars on iOS 7. Use with UINavigationController's initWithNavigationBarClass:toolbarClass: method.
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Alan Zeino" => "alan.zeino@gmail.com" }
   s.platform     = :ios
-  s.source       = { :git => "https://github.com/alanzeino/AZColoredNavigationBar.git", :tag => "0.0.3" }
+  s.source       = { :git => "https://github.com/alanzeino/AZColoredNavigationBar.git", :tag => "0.0.4" }
   s.source_files  = 'AZColoredNavigationBar'
   s.requires_arc = true
 end
