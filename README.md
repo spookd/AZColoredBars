@@ -6,7 +6,8 @@ Usage
 -----
 Use with UINavigationController's initWithNavigationBarClass:toolbarClass: method:
 ```objective-c
-UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[AZColoredNavigationBar class] toolbarClass:[AZColoredToolbar class]];
+[[UINavigationController alloc] initWithNavigationBarClass:[AZColoredNavigationBar class]
+                                              toolbarClass:[AZColoredToolbar class]];
 ```
 
 You can then set their respective tint colors directly, or by using their `UIAppearance` class - e.g.:
@@ -20,7 +21,6 @@ To change the colors intensity, use the static `intensity` property of the `AZCo
 #import "AZColoredBars.h"
 
 // ...
-
 AZColoredBars.intensity = .65f;
 ```
 
