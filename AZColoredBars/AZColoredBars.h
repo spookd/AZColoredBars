@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "AZColoredNavigationBar.h"
+#import "AZColoredToolbar.h"
+
 #define AZColoredBarsIntensityChanged      @"AZColoredBarsIntensityChanged"
 #define AZColoredBarsIntensityChangedValue @"AZColoredBarsIntensityChangedValue"
 
