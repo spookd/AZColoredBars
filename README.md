@@ -1,29 +1,33 @@
 AZColoredNavigationBar
 ======================
-
-A drop–in `UINavigationBar` subclass which allows for strong coloured navigation bars on iOS 7. 
+A drop–in `UINavigationBar` and `UIToolbar` subclass which allows for strong coloured navigation bars on iOS 7. 
 
 Usage
 -----
-
 Use with UINavigationController's initWithNavigationBarClass:toolbarClass: method:
-
-```
-UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[AZColoredNavigationBar class] toolbarClass:[UIToolbar class]];
-
-// If you need to set a rootViewController too, then set the navigationController's viewControllers.
-navigationController.viewControllers = @[ rootViewController ];
+```objective-c
+UINavigationController *navigationController = [[UINavigationController alloc] initWithNavigationBarClass:[AZColoredNavigationBar class] toolbarClass:[AZColoredToolbar class]];
 ```
 
-Then either set the barTintColor using UIAppearance (applied globally):
+You can then set their respective tint colors directly, or by using their `UIAppearance` class - e.g.:
+```objective-c
+[[UIToolbar appearance] setBarTintColor:UIColor.blueColor];
+[[UINavigationBar appearance] setBarTintColor:UIColor.blueColor];
+```
 
-`[[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];`
+To change the colors intensity, use the static `intensity` property of the `AZColoredBars` object:
+```objective-c
+#import "AZColoredBars.h"
 
-Or if you want to change the colour dynamically:
+// ...
 
-`navigationBar.barTintColor = [UIColor blueColor];`
+AZColoredBars.intensity = .65f;
+```
+
+Storyboards
+-----------
+Simply set the control class to `AZColoredNavigationBar` or `AZColoredToolbar`.
 
 Acknowledgements
 ----------------
-
 Thanks to @steventroughtonsmith for the original help as seen in this [gist](https://gist.github.com/alanzeino/6619253). Forked from @aprato's modification [here](https://gist.github.com/aprato/6631390). 
