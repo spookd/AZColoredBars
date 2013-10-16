@@ -14,4 +14,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AZColoredNavigationBar : UINavigationBar @end
+@interface AZColoredNavigationBar : UINavigationBar
+@end

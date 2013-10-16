@@ -1,25 +1,23 @@
 //
-//  AZColoredNavigationBar.m
-//  AZColoredNavigationBar
+//  AZColoredToolbar.m
+//  DR Nyheder
 //
-//  Created by Alan on 23/09/13.
-//  Copyright (c) 2013 Alan Zeino. All rights reserved.
+//  Created by Nicolai Persson on 11/10/13.
+//  Copyright (c) 2013 Danish Broadcasting Corporation. All rights reserved.
 //
 
-#import "AZColoredNavigationBar.h"
+#import "AZColoredToolbar.h"
 #import "AZColoredBars.h"
 
-#ifndef StatusBarHeight
-#define StatusBarHeight UIApplication.sharedApplication.statusBarFrame.size.height
-#endif
-
-@interface AZColoredNavigationBar() {
+@interface AZColoredToolbar() {
     CALayer *colorLayer;
 }
+- (void)intensityChanged:(NSNotification *)notification;
+
 @property(nonatomic, readonly) CALayer *colorLayer;
 @end
 
-@implementation AZColoredNavigationBar
+@implementation AZColoredToolbar
 
 - (void)listenForChanges {
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(intensityChanged:) name:AZColoredBarsIntensityChanged object:nil];
@@ -92,9 +90,11 @@
     if (UIDevice.currentDevice.systemVersion.integerValue < 7)
         return;
     
-    CGFloat statusBarHeight = StatusBarHeight;
-    self.colorLayer.frame   = CGRectMake(0.f, -statusBarHeight, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) + statusBarHeight);
-    self.colorLayer.opacity = AZColoredBars.intensity;
+    CGRect frame = self.bounds;
+    frame.origin = CGPointZero;
+    
+    self.colorLayer.frame = frame;
+    colorLayer.opacity    = AZColoredBars.intensity;
     
     [self.colorLayer removeFromSuperlayer];
     [self.layer insertSublayer:self.colorLayer atIndex:1];
