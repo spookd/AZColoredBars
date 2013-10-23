@@ -8,6 +8,7 @@
 
 #import "AZColoredToolbar.h"
 #import "AZColoredBars.h"
+#import "AZMacros.h"
 
 @interface AZColoredToolbar() {
     CALayer *colorLayer;
@@ -62,7 +63,7 @@
 - (void)setBarTintColor:(UIColor *)barTintColor {
     [super setBarTintColor:barTintColor];
     
-    if (UIDevice.currentDevice.systemVersion.integerValue < 7)
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0") || SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0.3"))
         return;
     
     self.colorLayer.backgroundColor = barTintColor.CGColor;
@@ -87,7 +88,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    if (UIDevice.currentDevice.systemVersion.integerValue < 7)
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0") || SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0.3"))
         return;
     
     CGRect frame = self.bounds;

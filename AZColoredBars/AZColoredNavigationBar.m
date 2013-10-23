@@ -8,10 +8,7 @@
 
 #import "AZColoredNavigationBar.h"
 #import "AZColoredBars.h"
-
-#ifndef StatusBarHeight
-#define StatusBarHeight UIApplication.sharedApplication.statusBarFrame.size.height
-#endif
+#import "AZMacros.h"
 
 @interface AZColoredNavigationBar() {
     CALayer *colorLayer;
@@ -64,7 +61,7 @@
 - (void)setBarTintColor:(UIColor *)barTintColor {
     [super setBarTintColor:barTintColor];
     
-    if (UIDevice.currentDevice.systemVersion.integerValue < 7)
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0") || SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0.3"))
         return;
     
     self.colorLayer.backgroundColor = barTintColor.CGColor;
@@ -89,7 +86,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    if (UIDevice.currentDevice.systemVersion.integerValue < 7)
+    if (SYSTEM_VERSION_LESS_THAN(@"7.0") || SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0.3"))
         return;
     
     CGFloat statusBarHeight = StatusBarHeight;
